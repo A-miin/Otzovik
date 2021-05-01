@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Товар{% endblock title %}
+{% block content %}
+    <div class="row">
+
+        <div class="card border-0" >
+          <img  src="{% if product.picture %}{{ product.picture.url }}{% else %}{% static 'img/no-img.png' %}{% endif %}" class="card-img-top product-img"  alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p>{{ product.category }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+    </div>
+
+{% endblock content %}

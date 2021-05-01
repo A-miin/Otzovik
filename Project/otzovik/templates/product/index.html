@@ -5,15 +5,29 @@
 {% block content %}
     <div class="row">
         {% for product in products %}
-            <div class="col-sm-6 col-md-4">
-                <div class="card" >
-                  <img  src="{% if product.picture %}{{ product.picture.url }}{% else %}{% static 'img/no-img.png' %}{% endif %}" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p>{{ product.category }}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
+            <div class="">
+                <div class="d-flex flex-row p-4">
+                    <div>
+                        <img  src="{% if product.picture %}{{ product.picture.url }}{% else %}{% static 'img/no-img.png' %}{% endif %}" class="card-img-top products-img" alt="...">
+                    </div>
+
+                    <div class="m-4">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.category }}</p>
+                        <a href="{% url 'otzovik:product-view' product.id %}" class="btn btn-outline-primary">Детальный просмотр</a>
+
+                    </div>
+
                 </div>
+
+{#                <div class="card mb-4" >#}
+{#                  <img  src="{% if product.picture %}{{ product.picture.url }}{% else %}{% static 'img/no-img.png' %}{% endif %}" class="card-img-top" alt="...">#}
+{#                  <div class="card-body">#}
+{#                    <h5 class="card-title">{{ product.name }}</h5>#}
+{#                    <p>{{ product.category }}</p>#}
+{#                    <a href="{% url 'otzovik:product-view' product.id %}" class="btn btn-primary">Детальный просмотр</a>#}
+{#                  </div>#}
+{#                </div>#}
             </div>
         {% endfor %}
     </div>
