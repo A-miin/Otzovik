@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block nav %}
+    {% if user.is_authenticated %}
     <li class="nav-item">
         <a class="nav-link " href="{% url "accounts:profile-update" %}">Update</a>
       </li>
     <li class="nav-item">
-{#        <a class="nav-link " href="{% url "accounts:password-update" %}">Password</a>#}
+        <a class="nav-link " href="{% url "accounts:password-update" %}">Password</a>
       </li>
+    {% endif %}
 {% endblock nav %}
+
 {% block content %}
     <div class=" row display-flex">
         <div class="col-md-8 p-4">

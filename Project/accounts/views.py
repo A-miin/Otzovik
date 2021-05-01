@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.core.paginator import Paginator
 
 from django.views.generic import DetailView, ListView, UpdateView
-from .forms import UserRegisterForm, UserChangeForm
+from .forms import UserRegisterForm, UserChangeForm, PasswordUpdateForm
 
 
 def register_view(request, *args, **kwargs):
@@ -43,3 +43,15 @@ class UserChangeView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('accounts:profile')
+
+
+class UserPasswordUpdateView(LoginRequiredMixin,UpdateView):
+    model = get_user_model()
+    template_name = 'password.html'
+    form_class = PasswordUpdateForm
+    context_object_name = 'user_object'
+
+    def get_success_url(self):
+        return reverse('accounts:login')
+    def get_object(self, queryset=None):
+        return self.request.user
