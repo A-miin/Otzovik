@@ -1,0 +1,161 @@
+[
+{
+  "model": "otzovik.product",
+  "pk": 1,
+  "fields": {
+    "name": "Окрошка",
+    "category": "Food",
+    "description": "Окро́шка (от глагола крошить — мелко нареза́ть) — традиционное блюдо национальной русской[1] кухни, холодный суп[2][3].\r\n\r\nРецепты окрошки появились ещё на заре русской кулинарной литературы, в конце XVIII века — в частности, в труде Николая Осипова «Старинная русская хозяйка, ключница и стряпуха»[4], а родственное ей блюдо — ботвинья — упоминается ещё раньше, в «Домострое». Образ окрошки как символа эклектики («махистская окрошка») использует Ленин в работе «Материализм и эмпириокритицизм» (1908 год).",
+    "picture": "product_pics/окрошка.jpg"
+  }
+},
+{
+  "model": "otzovik.product",
+  "pk": 4,
+  "fields": {
+    "name": "Центр подготовки программистов  Attractor School - Бишкек.",
+    "category": "Education",
+    "description": "Научим программировать и трудоустроим большинство выпускников *",
+    "picture": "product_pics/аттрактор.jpeg"
+  }
+},
+{
+  "model": "otzovik.product",
+  "pk": 5,
+  "fields": {
+    "name": "Ремонт бытовой техники",
+    "category": "Repairs",
+    "description": "Наша мастерская оказывает услуги по ремонту бытовой техники в Бишкеке с 2008 года. Мастер сервисного центра приедет в удобное для вас время и отремонтирует технику прямо у вас дома с гарантией до 2-х лет.",
+    "picture": "product_pics/ремонт.jpeg"
+  }
+},
+{
+  "model": "otzovik.product",
+  "pk": 6,
+  "fields": {
+    "name": "биозавивка",
+    "category": "Beauty and health",
+    "description": "",
+    "picture": ""
+  }
+},
+{
+  "model": "otzovik.product",
+  "pk": 7,
+  "fields": {
+    "name": "Ноутбук Lenovo Legion 5P 15ARH05H 82GU000KRU",
+    "category": "Computers",
+    "description": "Дисплей: 15.6\" IPS 1920x1080 FHD;\r\nПроцессор: AMD Ryzen 7 4800H 2.90 ГГц;\r\nВидеокарта: nVidia GeForce RTX 2060 6 Гб;\r\nОперативная память: 16 Гб DDR4;\r\nНакопитель: SSD 1024 Гб;\r\nОперационная система: Windows 10 Home",
+    "picture": "product_pics/ноут1.jpg"
+  }
+},
+{
+  "model": "otzovik.review",
+  "pk": 1,
+  "fields": {
+    "author": 1,
+    "product": 1,
+    "text": "отзыв1",
+    "rate": 5,
+    "is_moder": false,
+    "created_at": "2021-05-01T06:47:36.916Z",
+    "updated_at": "2021-05-01T06:47:36.917Z"
+  }
+},
+{
+  "model": "otzovik.review",
+  "pk": 2,
+  "fields": {
+    "author": 1,
+    "product": 4,
+    "text": "отзыв2",
+    "rate": 5,
+    "is_moder": true,
+    "created_at": "2021-05-01T06:47:48.387Z",
+    "updated_at": "2021-05-01T06:51:00.832Z"
+  }
+},
+{
+  "model": "otzovik.review",
+  "pk": 3,
+  "fields": {
+    "author": 1,
+    "product": 5,
+    "text": "отзыв3",
+    "rate": 1,
+    "is_moder": true,
+    "created_at": "2021-05-01T06:48:01.149Z",
+    "updated_at": "2021-05-01T06:51:05.128Z"
+  }
+},
+{
+  "model": "otzovik.review",
+  "pk": 4,
+  "fields": {
+    "author": 1,
+    "product": 6,
+    "text": "отзыв1",
+    "rate": 4,
+    "is_moder": true,
+    "created_at": "2021-05-01T06:49:37.846Z",
+    "updated_at": "2021-05-01T06:49:37.846Z"
+  }
+},
+{
+  "model": "otzovik.review",
+  "pk": 5,
+  "fields": {
+    "author": 1,
+    "product": 7,
+    "text": "отзыв1",
+    "rate": 5,
+    "is_moder": true,
+    "created_at": "2021-05-01T06:49:57.962Z",
+    "updated_at": "2021-05-01T06:51:09.740Z"
+  }
+},
+{
+  "model": "otzovik.review",
+  "pk": 6,
+  "fields": {
+    "author": 1,
+    "product": 1,
+    "text": "отзыв6",
+    "rate": 3,
+    "is_moder": true,
+    "created_at": "2021-05-01T06:50:16.682Z",
+    "updated_at": "2021-05-01T06:50:16.682Z"
+  }
+},
+{
+  "model": "otzovik.review",
+  "pk": 7,
+  "fields": {
+    "author": 1,
+    "product": 1,
+    "text": "отзыв7",
+    "rate": 1,
+    "is_moder": true,
+    "created_at": "2021-05-01T06:50:49.090Z",
+    "updated_at": "2021-05-01T06:50:49.090Z"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$SWn9cMGf780TNHampzpejU$k3yeZFU9MvEwWXGt5cqYmPOshYFnWXGyZlSjZih8eco=",
+    "last_login": "2021-05-01T06:18:09.686Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@admin.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-05-01T06:17:59.229Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
