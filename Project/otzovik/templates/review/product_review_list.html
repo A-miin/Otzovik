@@ -1,0 +1,10 @@
+{% for review in reviews %}
+    <div class="card">
+      <div class="card-body">
+        <a href="#">{{ review.author.username }}</a><br>
+          <small class="text-muted ">{{ review.author.email }}</small>
+          <p class="pt-2">{{ review.text }}</p>
+          Оценка: {{ review.rate }}
+      </div>
+    </div>
+{% endfor %}

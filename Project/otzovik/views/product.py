@@ -21,6 +21,12 @@ class ProductView(DetailView):
     template_name = 'product/view.html'
     context_object_name = 'product'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['reviews'] = self.object.review.all().exclude(is_moder=False)
+        return context
+
+
 class ProductCreateView(PermissionRequiredMixin, CreateView):
     permission_required = 'otzovik.add_product'
     template_name = 'product/create.html'
