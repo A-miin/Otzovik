@@ -25,10 +25,6 @@ class UserDetailView(DetailView):
     template_name = 'detail.html'
     context_object_name = 'user_object'
 
-    def get_object(self, queryset=None):
-        self.object = self.request.user
-        print(f'object={self.object}')
-        return  self.object
 
 
 class UserChangeView(LoginRequiredMixin, UpdateView):
