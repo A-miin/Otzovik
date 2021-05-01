@@ -2,7 +2,10 @@
 {% block title %}Редактирование{% endblock title %}
 {% block nav %}
   <li class="nav-item">
-    <a class="nav-link " href="{% url "otzovik:product-view" product.id %}">Вернуться к товару</a>
+    <a class="nav-link " href="{% url "otzovik:review-delete" object.id %}">Удалить отзыв</a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link " href="{% url "otzovik:product-view" object.product.id %}">Вернуться к товару</a>
   </li>
 {% endblock nav %}
 {% block content %}

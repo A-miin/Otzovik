@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Удаление{% endblock title %}
+{% block content%}
+    <div class="container text-center">
+        <h3 class="mt-4 mb-4">Вы действительно хотите удалить {{ review.name }}?</h3>
+        <form method="post">
+            {% csrf_token %}
+            <a href="{% url 'otzovik:product-view' review.product.id %}" class="btn btn-outline-info">Нет</a>
+            <input type="submit" name="action" value="Да" class="btn btn-outline-danger"/>
+        </form>
+    </div>
+{% endblock content %}

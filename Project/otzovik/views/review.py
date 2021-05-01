@@ -58,3 +58,16 @@ class ReviewUpdateView(PermissionRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('otzovik:product-view', kwargs={'pk':self.object.product.id})
+
+class ReviewDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'otzovik.delete_review'
+
+    def has_permission(self):
+        review = get_object_or_404(Review, id=self.kwargs.get('pk'))
+        return super().has_permission() or (self.request.user == review.author)
+
+    template_name = 'review/delete.html'
+    model = Review
+    context_object_name = 'review'
+    success_url = reverse_lazy('otzovik:product-list')
+

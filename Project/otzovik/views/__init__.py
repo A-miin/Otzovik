@@ -6,4 +6,4 @@ ProductDeleteView,
 ProductUpdateView,
 
 )
-from .review import ReviewCreateView,ReviewUpdateView
+from .review import ReviewCreateView,ReviewUpdateView,ReviewDeleteView
