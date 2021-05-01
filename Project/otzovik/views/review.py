@@ -9,7 +9,7 @@ from django.views.generic import (
     DeleteView,
 )
 from otzovik.models import Review, Product
-from otzovik.forms import ReviewForm
+from otzovik.forms import ReviewForm, ReviewModerForm
 
 class ReviewCreateView(LoginRequiredMixin, CreateView):
     template_name = 'review/create.html'
@@ -40,13 +40,18 @@ class ReviewUpdateView(PermissionRequiredMixin, UpdateView):
 
     form_class = ReviewForm
     model = Review
-    template_name = 'product/update.html'
+    template_name = 'review/update.html'
     context_object_name = 'product'
+
+    def get_form_class(self):
+        if self.request.user.groups.filter(name='Moderator').exists():
+            self.form_class = ReviewModerForm
+        return super().get_form_class()
 
     def form_valid(self, form):
         """If the form is valid, save the associated model."""
         self.object = form.save()
-        if not self.request.user.has_perm('otzovik.change_review'):
+        if not self.request.user.groups.filter(name='Moderator').exists():
             self.object.is_moder=False
 
         return super().form_valid(form)

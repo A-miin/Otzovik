@@ -11,3 +11,8 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('text', 'rate' )
+
+class ReviewModerForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ('text', 'rate', 'is_moder' )

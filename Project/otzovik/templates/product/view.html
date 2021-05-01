@@ -21,6 +21,7 @@
             </h5>
             <p class="card-text">{{ product.description }}</p>
             <p>{{ product.category }}</p>
+              <h6>Средняя оценка: {{ product.get_rate }}</h6>
             <a href="{% url 'otzovik:review-create' product.pk %}" class="btn btn-primary">Создать отзыв</a>
           </div>
         </div>

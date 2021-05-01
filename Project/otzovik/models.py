@@ -23,6 +23,16 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def get_rate(self):
+        reviews = self.review.all().exclude(is_moder=False)
+        rate = 0
+        if reviews.count()>0:
+            for review in reviews:
+                rate+=review.rate
+            rate=rate/reviews.count()
+        return rate
+
+
 class Review(models.Model):
     author = models.ForeignKey(get_user_model(),on_delete=models.CASCADE, related_name='review' ,verbose_name='Автор' )
     product = models.ForeignKey('otzovik.Product', on_delete=models.CASCADE, related_name='review', verbose_name='Продукт')

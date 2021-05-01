@@ -14,20 +14,13 @@
                     <div class="m-4">
                         <h3>{{ product.name }}</h3>
                         <p>{{ product.category }}</p>
+                        <p>Средняя оценка:{{ product.get_rate }}</p>
                         <a href="{% url 'otzovik:product-view' product.id %}" class="btn btn-outline-primary">Детальный просмотр</a>
 
                     </div>
 
                 </div>
 
-{#                <div class="card mb-4" >#}
-{#                  <img  src="{% if product.picture %}{{ product.picture.url }}{% else %}{% static 'img/no-img.png' %}{% endif %}" class="card-img-top" alt="...">#}
-{#                  <div class="card-body">#}
-{#                    <h5 class="card-title">{{ product.name }}</h5>#}
-{#                    <p>{{ product.category }}</p>#}
-{#                    <a href="{% url 'otzovik:product-view' product.id %}" class="btn btn-primary">Детальный просмотр</a>#}
-{#                  </div>#}
-{#                </div>#}
             </div>
         {% endfor %}
     </div>

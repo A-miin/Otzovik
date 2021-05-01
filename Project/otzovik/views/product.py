@@ -23,7 +23,10 @@ class ProductView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        context['reviews'] = self.object.review.all().exclude(is_moder=False)
+        if self.request.user.groups.filter(name='Moderator').exists():
+            context['reviews'] = self.object.review.all()
+        else:
+            context['reviews'] = self.object.review.all().exclude(is_moder=False)
         return context
 
 
