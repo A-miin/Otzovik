@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.shortcuts import reverse
+from django.shortcuts import reverse, get_object_or_404
 from django.views.generic import (
     ListView,
     DetailView,
@@ -32,4 +32,24 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('otzovik:product-view', kwargs={'pk':self.kwargs.get('pk')})
 
+class ReviewUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'otzovik.change_review'
+    def has_permission(self):
+        review = get_object_or_404(Review, id=self.kwargs.get('pk'))
+        return super().has_permission() or (self.request.user==review.author)
 
+    form_class = ReviewForm
+    model = Review
+    template_name = 'product/update.html'
+    context_object_name = 'product'
+
+    def form_valid(self, form):
+        """If the form is valid, save the associated model."""
+        self.object = form.save()
+        if not self.request.user.has_perm('otzovik.change_review'):
+            self.object.is_moder=False
+
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('otzovik:product-view', kwargs={'pk':self.object.product.id})
