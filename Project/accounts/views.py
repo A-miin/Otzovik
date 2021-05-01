@@ -18,3 +18,14 @@ def register_view(request, *args, **kwargs):
     else:
         form = UserRegisterForm()
     return render(request, 'registration/create.html', context={'form':form})
+
+class UserDetailView(DetailView):
+
+    model = get_user_model()
+    template_name = 'detail.html'
+    context_object_name = 'user_object'
+
+    def get_object(self, queryset=None):
+        self.object = self.request.user
+        print(f'object={self.object}')
+        return  self.object

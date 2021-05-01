@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
-{% block title %}Пользователь{% endblock %}
-{% block menu_links %}
-    <li><a href="#">Редактировать</a></li>
-    <li><a href="#">Смена пароля</a></li>
-{% endblock %}
-
-{% block content %}
-    <h1>Личная страница пользователя {{ user_obj.get_full_name|default:user_obj.username }}</h1>
-    {% if user_obj.profile.avatar %}
-        <img class="avatar" src="{{ user_obj.profile.avatar.url }}" width="250" height="250" alt="user picture">
+{% load static %}
+{% block nav %}
+    {% if can_update %}
+    <li class="nav-item">
+{#        <a class="nav-link " href="{% url "accounts:profile-update" %}">Update</a>#}
+      </li>
+    <li class="nav-item">
+{#        <a class="nav-link " href="{% url "accounts:password-update" %}">Password</a>#}
+      </li>
     {% endif %}
-    <p>Имя пользователя: {{ user_obj.username }}</p>
-    <p>Имя: {{ user_obj.first_name }}</p>
-    <p>Фамилия: {{ user_obj.last_name }}</p>
-    <p>Дата рождения: {{ user_obj.profile.birth_date|date:'d.m.Y' }}</p>
-    <p>Почта: {{ user_obj.email }}</p>
-    <h2 class="text-center clear">Статьи автора:</h2>
-    {% include 'partial/article_list.html' %}
-{% endblock %}
+{% endblock nav %}
+{% block content %}
+    <div class=" row display-flex">
+        <div class="col-md-8 p-4">
+            <ul>
+                <li>Логин: {% if user_object.username  %}{{ user_object.username }}{% else %}Отсутсвует{% endif %}</li>
+                <li>Имя: {% if user_object.first_name %}{{ user_object.first_name }}{% else %}Отсутсвует{% endif %}</li>
+                <li>Email: {% if user_object.email %}{{ user_object.email }}{% else %}Отсутсвует{% endif %}</li>
+            </ul>
+        </div>
+    </div>
+    {% if user_object.review.all %}
+        <h3>Reviews</h3>
+    {% include 'review/product_review_list.html' with reviews=user_object.review.all %}
+    {% else %}
+    <h3> No reviews</h3>
+    {% endif %}
+{% endblock content %}
