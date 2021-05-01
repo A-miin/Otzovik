@@ -17,9 +17,12 @@
 
 
               <li class="nav-item">
-                <a class="nav-link active" href="{% url "otzovik:product-create" %}">Новый товар</a>
+                <a class="nav-link " href="{% url "otzovik:product-create" %}">Новый товар</a>
               </li>
 
+
+
+                {% block nav %}{% endblock nav %}
             </ul>
         </nav>
             {% block content %}

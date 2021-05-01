@@ -27,3 +27,11 @@ class ProductCreateView(PermissionRequiredMixin, CreateView):
     model = Product
     success_url = reverse_lazy('otzovik:product-list')
 
+class ProductDeleteView(PermissionRequiredMixin,DeleteView):
+    permission_required = 'otzovik.delete_product'
+    template_name = 'product/delete.html'
+    model = Product
+    context_object_name = 'product'
+    success_url = reverse_lazy('otzovik:product-list')
+
+
