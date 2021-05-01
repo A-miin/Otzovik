@@ -1,6 +1,6 @@
 from django.urls import path
 from otzovik.views import (IndexView, ProductView, ProductCreateView, ProductDeleteView,ProductUpdateView,
-                           ReviewCreateView,ReviewUpdateView,ReviewDeleteView)
+                           ReviewCreateView,ReviewUpdateView,ReviewDeleteView,NoModerReview)
 
 app_name='otzovik'
 urlpatterns=[
@@ -12,6 +12,7 @@ urlpatterns=[
     path('<int:pk>/review/create', ReviewCreateView.as_view(), name = 'review-create'),
     path('<int:pk>/review/update', ReviewUpdateView.as_view(), name = 'review-update'),
     path('<int:pk>/review/delete', ReviewDeleteView.as_view(), name = 'review-delete'),
+    path('no_reviews/', NoModerReview.as_view(), name = 'no-reviews'),
 
 
 ]

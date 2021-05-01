@@ -66,8 +66,22 @@ class ReviewDeleteView(PermissionRequiredMixin, DeleteView):
         review = get_object_or_404(Review, id=self.kwargs.get('pk'))
         return super().has_permission() or (self.request.user == review.author)
 
+    def has_permission(self):
+        review = get_object_or_404(Review, id=self.kwargs.get('pk'))
+        return super().has_permission() or (self.request.user == review.author)
+
     template_name = 'review/delete.html'
     model = Review
     context_object_name = 'review'
     success_url = reverse_lazy('otzovik:product-list')
+
+class NoModerReview(PermissionRequiredMixin, ListView):
+    permission_required = 'otzovik.can_no_moder_reviews'
+    template_name = 'review/list.html'
+    model = Review
+    context_object_name = 'reviews'
+
+    def get_queryset(self):
+        queryset = Review.objects.filter(is_moder=False).order_by('-updated_at')
+        return queryset
 

@@ -45,6 +45,9 @@ class Review(models.Model):
     class Meta:
         verbose_name='Отзыв'
         verbose_name_plural='Отзывы'
+        permissions = [
+            ('can_no_moder_reviews', 'can_no_moder_reviews')
+        ]
 
     def __str__(self):
         return f'{self.author.username} - {self.product.name}'
