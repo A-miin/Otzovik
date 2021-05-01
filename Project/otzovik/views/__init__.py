@@ -3,4 +3,6 @@ IndexView,
 ProductView,
 ProductCreateView,
 ProductDeleteView,
+ProductUpdateView,
+
 )
