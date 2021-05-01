@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock title %}
+{% block content %}
+    <div class="row">
+        {% for product in products %}
+            <div class="col-sm-6 col-md-4">
+                <div class="card" >
+                  <img  src="{% if product.picture %}{{ product.picture.url }}{% else %}{% static 'img/no-img.png' %}{% endif %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p>{{ product.category }}</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}
